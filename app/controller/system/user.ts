@@ -46,11 +46,11 @@ export default class UserController extends Controller {
             ctx.fail(ret.message, ret.code)
         }
     }
-    @bp.post('/sendcode')
-    public async sendcode() {
+    @bp.post('/getcode')
+    public async getcode() {
         const { ctx } = this;
         let params = ctx.request.body;
-        let ret = await ctx.service.system.user.sendcode(params);
+        let ret = await ctx.service.system.user.getcode(params);
         if (ret.code == 0) {
             ctx.success()
         } else {
@@ -98,7 +98,10 @@ export default class UserController extends Controller {
     public async info() {
         const { ctx } = this;
         let user = ctx.user;
-        const userInfo = await ctx.service.system.user.getUserInfo({ id: user.id })
+        const userInfo = await ctx.service.system.user.getUserInfo({ id: user })
+        if(!userInfo){
+            return ctx.fail('未登录', 401);
+        }
         return ctx.success(userInfo);
     }
     @bp.get('/detail/:id')

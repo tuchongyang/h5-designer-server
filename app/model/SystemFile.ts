@@ -11,6 +11,15 @@ module.exports = app => {
         type: STRING,//文件类型 image/video/application
         creator: INTEGER,//创建的用户id
     }, { freezeTableName: true, timestamps: true });
-
+    // 表关联的字段
+    SystemFile.associate = function () {
+        // 一对多
+        // app.model.User.hasMany(app.model.Diary, { foreignKey: 'user_id', targetKey: 'id'});
+        /**
+         * User.belongsTo(关联的模型, { foreignKey: '使用什么字段关联', targetKey: '与关联的模型那个字段关联', as: '别名' });
+        */
+        // 一对一
+        SystemFile.belongsTo(app.model.SystemUser, { foreignKey: 'creator', targetKey: 'id', as: 'user' });
+    }
     return SystemFile;
 };

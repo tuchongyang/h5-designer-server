@@ -55,7 +55,7 @@ export default class UserService extends Service {
         const { ctx } = this
         let results = { code: 500, message: "失败", }
         await ctx.model.SystemUser.update(options, {
-            where: { id: ctx.user.id }
+            where: { id: ctx.user }
         }).then(() => {
             results = { code: 0, message: "更新成功", }
         }).catch(err => {
@@ -93,7 +93,7 @@ export default class UserService extends Service {
                     * app.config.jwt.secret 配置的密钥
                     * {expiresIn:'24h'} 过期时间
                     */
-                    const token = this.app.jwt.sign({ user: data }, this.config.jwt.secret, { expiresIn: '7d' });
+                    const token = this.app.jwt.sign({ user: data.id }, this.config.jwt.secret, { expiresIn: '7d' });
                     results = { code: 0, message: "登录成功", token }
                     //记录用户最后登录时间与最后登录ip
                     ctx.model.SystemUser.update({
@@ -132,9 +132,6 @@ export default class UserService extends Service {
         let userInfo: any = {};
         await ctx.model.SystemUser.findOne({
             where: options,
-            include: [
-                { model: this.app.model.SystemFile, as: 'avatar' }
-            ],
             attributes: { exclude: ['password'] }
         }).then(async res => {
             userInfo = res
@@ -142,7 +139,7 @@ export default class UserService extends Service {
         return userInfo
     }
     //发送验证码
-    async sendcode(options) {
+    async getcode(options) {
         const { ctx } = this
         let results = { code: 400, message: "失败", token: '' }
         const { email } = options
