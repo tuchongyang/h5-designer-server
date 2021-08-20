@@ -1,0 +1,193 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "id": "b7b59324-a019-42bf-ae33-e22ee163f4e2",
+        "name": "h5-designer"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Service",
+            "id": "aab5e634-a4f6-46cf-82e1-6ce36cef1c83",
+            "name": "用户"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api"
+                },
+                "id": "2e758eaa-a929-47be-aa8f-7dbec7afd38b",
+                "name": "api",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/system/user/info"
+                },
+                "id": "e6a8bf80-e4ae-49af-a4b4-e4c6311b3327",
+                "name": "个人信息",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InRjeSIsImVtYWlsIjoiNzc5MzExOTk4QHFxLmNvbSIsIm5hbWUiOm51bGwsInNleCI6MSwiYXZhdGFySWQiOm51bGwsInR5cGUiOjIsInBob25lIjpudWxsLCJzdGF0dXMiOjEsImxhc3RMb2dpblRpbWUiOm51bGwsImxhc3RMb2dpbklwIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIxLTA4LTIwIDE3OjQzOjExIiwidXBkYXRlZEF0IjoiMjAyMS0wOC0yMCAxNzo0MzoxMSIsInBlcm1pc3Npb25zIjpbXX0sImlhdCI6MTYyOTQ1MzcxMywiZXhwIjoxNjI5NTQwMTEzfQ.KT7c2rAKRntLYXtMwlH3R5Fw0C6jh0kV_4RCj6Gaqto"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"email\":\"2779311998@qq.com\",\n  \"code\":\"878279\",\n  \"username\":\"tcy2\",\n  \"password\":\"123456\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/system/user/regist"
+                },
+                "id": "63e97809-fd7d-4383-b9b1-ed15d8ad58d3",
+                "name": "注册",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\"username\":\"tcy\",\"password\": \"123456\"}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/system/user/login"
+                },
+                "id": "5b0897e8-c69e-450d-bb45-281a2ab6e8cc",
+                "name": "登录",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"email\":\"779311998@qq.com\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/system/user/sendcode"
+                },
+                "id": "8f2de748-34db-431d-b067-10043d35f01c",
+                "name": "获取验证码",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
