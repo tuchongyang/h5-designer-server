@@ -6,6 +6,10 @@
 
 [原型地址](https://modao.cc/app/0822f6ebdd7480fedad3defb5deadff1a72324c5?simulator_type=device&sticky)
 
+项目地址 http://h5.tucy.top
+
+api地址 http://h5.tucy.top/api
+
 ## 技术栈
 
 ### API服务端
