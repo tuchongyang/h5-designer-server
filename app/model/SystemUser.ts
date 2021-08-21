@@ -13,6 +13,9 @@ module.exports = app => {
         type: INTEGER, // 类型，1：管理员，2：普通用户
         phone: { type: STRING }, // 手机号码
         status: { type: INTEGER, defaultValue: 1 }, //  用户状态： 0:禁用, 1:启用
+        birth: DATE,
+        address: STRING,
+        fileSize: { type: INTEGER, defaultValue: 0 },
         lastLoginTime: DATE, // 上次登录时间
         lastLoginIp: STRING, // 上次登录地点
         // session_key: STRING, // 微信session_key

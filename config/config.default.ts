@@ -46,6 +46,8 @@ export default (appInfo: EggAppInfo) => {
     mode: 'file',
     fileSize: '100mb',
   };
+  config.pageSize = 20;
+  config.maxFileSize = 1024 * 50
 
   // the return config will combines to EggAppConfig
   return {

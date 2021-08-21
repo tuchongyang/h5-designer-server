@@ -4,14 +4,533 @@
     {
       "entity": {
         "type": "Project",
-        "id": "b7b59324-a019-42bf-ae33-e22ee163f4e2",
+        "id": "32cc8b07-2faf-4239-8c71-271e07677b00",
         "name": "h5-designer"
       },
       "children": [
         {
           "entity": {
             "type": "Service",
-            "id": "aab5e634-a4f6-46cf-82e1-6ce36cef1c83",
+            "id": "5f9902b0-fc76-400e-b436-456c87fe981e",
+            "name": "场景"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"title\":\"我的第一个场景1\",\n  \"desc\":\"这是描述\",\n  \"cover\":\"cover url\",\n  \"music\": \"音乐url\",\n  \"properties\":\"{}\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/update/2"
+                },
+                "id": "de4aef8d-fb2b-4aa5-bf31-c09e165e351a",
+                "name": "保存更新",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/list"
+                },
+                "id": "e1772d89-2ed4-40bb-83b6-ba68cfe8a93f",
+                "name": "列表",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+                  "name": "DELETE"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/1"
+                },
+                "id": "db130ccb-8b16-4e5d-a438-dd5237219e97",
+                "name": "删除",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/publish/2"
+                },
+                "id": "0b73a750-b85b-44ca-8498-e2d037b40749",
+                "name": "发布",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"title\":\"我的第一个场景1\",\n  \"desc\":\"这是描述\",\n  \"cover\":\"cover url\",\n  \"music\": \"音乐url\",\n  \"properties\":\"{}\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/save"
+                },
+                "id": "2437ad2d-f5c9-44cf-9bde-fe5616337c97",
+                "name": "新增",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/2"
+                },
+                "id": "5a1cf466-902e-4e38-990d-aa004f4fc9c9",
+                "name": "详情",
+                "headers": []
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "3bff93a1-661b-4d8e-9bbf-2891e5cfde66",
+            "name": "场景页面"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"name\":\"页面2\",\n  \"sortIndex\": 3,\n  \"cover\":\"\",\n  \"properties\":\"\",\n  \"elements\":\"\"\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/page/update/2"
+                },
+                "id": "aa1e6642-36c0-4fea-a7ef-d929eb017554",
+                "name": "修改",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": [
+                      {
+                        "enabled": true,
+                        "name": "sceneId",
+                        "value": "1"
+                      }
+                    ]
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/page/list"
+                },
+                "id": "657464f4-30e5-4087-8fe1-26c9045b368b",
+                "name": "列表",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+                  "name": "DELETE"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/page/1"
+                },
+                "id": "9a6c1774-0a1e-4018-b911-77452db939ce",
+                "name": "删除",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"name\":\"页面1\",\n  \"sortIndex\": 1,\n  \"cover\":\"\",\n  \"properties\":\"\",\n  \"elements\":\"\",\n  \"sceneId\": 1\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/page/save"
+                },
+                "id": "ba672ae0-5755-40d2-9865-d520cf5b1464",
+                "name": "添加",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/page/2"
+                },
+                "id": "e2a826af-1adf-4e55-8957-ba584ae7ebb8",
+                "name": "详情                                                                                                                                                                                                                                                              ",
+                "headers": []
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "ad5a1f4c-fc0a-4508-940a-0cb0d1a16dfa",
+            "name": "文件"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/file/list"
+                },
+                "id": "2cada664-5e84-4024-8e8e-385900f8afcd",
+                "name": "我上传的文件列表",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "multipart/form-data",
+                    "items": [
+                      {
+                        "enabled": true,
+                        "type": "File",
+                        "name": "file"
+                      }
+                    ]
+                  },
+                  "bodyType": "Form"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/file/upload"
+                },
+                "id": "318fe468-cede-47eb-a699-c2fd0f3d30c5",
+                "name": "文件上传",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "multipart/form-data"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+                  "name": "DELETE"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/file/84"
+                },
+                "id": "e0b1a803-bb76-4060-aaf8-eb5bf1b351ed",
+                "name": "文件删除",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "54216fe2-97db-4768-86dd-640357f8acb6",
             "name": "用户"
           },
           "children": [
@@ -38,7 +557,7 @@
                   "host": "${host}",
                   "path": "/api"
                 },
-                "id": "2e758eaa-a929-47be-aa8f-7dbec7afd38b",
+                "id": "f66f59e5-bbda-437e-9d4b-6f3ee6fa6cf6",
                 "name": "api",
                 "headers": []
               }
@@ -66,13 +585,13 @@
                   "host": "${host}",
                   "path": "/api/system/user/info"
                 },
-                "id": "e6a8bf80-e4ae-49af-a4b4-e4c6311b3327",
+                "id": "27759c9c-f246-4ed0-b78c-7a96855073dd",
                 "name": "个人信息",
                 "headers": [
                   {
                     "enabled": true,
                     "name": "authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJ1c2VybmFtZSI6InRjeSIsImVtYWlsIjoiNzc5MzExOTk4QHFxLmNvbSIsIm5hbWUiOm51bGwsInNleCI6MSwiYXZhdGFySWQiOm51bGwsInR5cGUiOjIsInBob25lIjpudWxsLCJzdGF0dXMiOjEsImxhc3RMb2dpblRpbWUiOm51bGwsImxhc3RMb2dpbklwIjpudWxsLCJjcmVhdGVkQXQiOiIyMDIxLTA4LTIwIDE3OjQzOjExIiwidXBkYXRlZEF0IjoiMjAyMS0wOC0yMCAxNzo0MzoxMSIsInBlcm1pc3Npb25zIjpbXX0sImlhdCI6MTYyOTQ1MzcxMywiZXhwIjoxNjI5NTQwMTEzfQ.KT7c2rAKRntLYXtMwlH3R5Fw0C6jh0kV_4RCj6Gaqto"
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
                   }
                 ]
               }
@@ -92,7 +611,48 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"email\":\"2779311998@qq.com\",\n  \"code\":\"878279\",\n  \"username\":\"tcy2\",\n  \"password\":\"123456\"\n}"
+                  "textBody": "{\"birth\":\"1990-09-09\"}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/system/user/update"
+                },
+                "id": "d2e5c93d-cee4-495a-8d2b-7f2b01f636c1",
+                "name": "修改个人资料",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n  \"email\":\"779311998@qq.com\",\n  \"code\":\"088276\",\n  \"username\":\"tcy2\",\n  \"password\":\"123456\"\n}"
                 },
                 "uri": {
                   "query": {
@@ -102,7 +662,7 @@
                   "host": "${host}",
                   "path": "/api/system/user/regist"
                 },
-                "id": "63e97809-fd7d-4383-b9b1-ed15d8ad58d3",
+                "id": "183eb273-8f3c-4a94-add6-0c3ff8b87c6b",
                 "name": "注册",
                 "headers": [
                   {
@@ -138,7 +698,7 @@
                   "host": "${host}",
                   "path": "/api/system/user/login"
                 },
-                "id": "5b0897e8-c69e-450d-bb45-281a2ab6e8cc",
+                "id": "27960e68-5a60-4a49-9056-3eb1f89e624f",
                 "name": "登录",
                 "headers": [
                   {
@@ -172,9 +732,9 @@
                     "items": []
                   },
                   "host": "${host}",
-                  "path": "/api/system/user/sendcode"
+                  "path": "/api/system/user/getcode"
                 },
-                "id": "8f2de748-34db-431d-b067-10043d35f01c",
+                "id": "20b1b608-8c42-4947-bd3a-522802c722d5",
                 "name": "获取验证码",
                 "headers": [
                   {

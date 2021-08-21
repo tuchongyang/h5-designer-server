@@ -22,10 +22,10 @@ module.exports = {
     const token = this.request.header.authorization;
     let tokenCache
     try {
-      tokenCache = token ? this.app.jwt.verify(token, this.app.config.secret) : undefined;
+      tokenCache = token ? this.app.jwt.verify(token, this.app.config.secret) : null;
     } catch (e) {
 
     }
-    return tokenCache && tokenCache.user || undefined;
+    return tokenCache && tokenCache.user || null;
   },
 };

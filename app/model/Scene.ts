@@ -1,0 +1,28 @@
+module.exports = app => {
+    const { STRING, INTEGER,TEXT } = app.Sequelize;
+
+    const Scene = app.model.define('scene', {
+        id: { type: INTEGER, primaryKey: true, autoIncrement: true },
+        title: STRING,
+        desc: STRING,//描述
+        cover: STRING,//封面
+        music: STRING,
+        status: {type:INTEGER, defaultValue: 1},//状态，1、待发布，2、已发布、3、已发布有修改
+        properties: TEXT,//文件名称
+        viewCount: INTEGER,//
+        creator: INTEGER,//创建的用户id
+    }, { freezeTableName: true, timestamps: true });
+    
+    // 表关联的字段
+    Scene.associate = function () {
+        // 一对多
+        app.model.Scene.hasMany(app.model.ScenePage, { foreignKey: 'scene_id', targetKey: 'id'});
+        /**
+         * User.belongsTo(关联的模型, { foreignKey: '使用什么字段关联', targetKey: '与关联的模型那个字段关联', as: '别名' });
+        */
+        // 一对一
+        // User.belongsTo(app.model.SystemFile, { foreignKey: 'avatarId', targetKey: 'id', as: 'avatar' });
+    }
+
+    return Scene;
+};

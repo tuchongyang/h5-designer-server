@@ -4,65 +4,37 @@ const fs = require('mz/fs');
 const path = require('path')
 const dayjs = require('dayjs');
 const pump = require('mz-modules/pump');
+const auth = require('../../middleware/auth')
 /**
-* @Controller 角色
+* @Controller 文件
 */
 bp.prefix('/file', 'FileController')
 export default class FileController extends Controller {
     /** 分页列表 */
-    @bp.get('/')
-    public async index() {
+    @bp.get('/list',auth())
+    public async list() {
         const { ctx } = this;
         let list = await ctx.service.system.file.list(ctx.query)
         ctx.success(list)
     }
-    /** 不分页列表 */
-    @bp.get('/list')
-    public async list() {
-        const { ctx } = this;
-        let list = await ctx.service.system.file.select()
-        ctx.success(list)
-    }
-
-
-    @bp.post('/save')
-    public async save() {
-        const { ctx } = this;
-        let params = ctx.request.body;
-        let ret = await ctx.service.system.file.save(params);
-        if (ret.code == 0) {
-            ctx.success()
-        } else {
-            ctx.fail(ret.message, ret.code)
-        }
-    }
-    @bp.del('/:id')
+    /** 删除 */
+    @bp.del('/:id',auth())
     public async remove() {
         const { ctx } = this;
-        let ret = await ctx.service.system.file.remove(ctx.params.id);
-        if (ret.code == 0) {
+        const results = await ctx.service.system.file.remove(ctx.params.id)
+        if(results.code == 0){
             ctx.success()
-        } else {
-            ctx.fail(ret.message, ret.code)
+        }else{
+            ctx.fail(results.message)
         }
     }
 
-    @bp.get('/:id')
-    public async detail() {
-        const { ctx } = this;
-        const data = await ctx.service.system.file.detail(ctx.params.id)
-
-        ctx.success(data)
-
-    }
     /**
      * @api {post} /api/file/upload 文件上传
-     * @apiName fileUpload
-     * @apiGroup 系统管理
      * 
      **/
 
-    @bp.post('/upload')
+    @bp.post('/upload',auth())
     async fileupload() {
         const { ctx } = this;
         const files = ctx.request.files;
@@ -74,7 +46,7 @@ export default class FileController extends Controller {
                 // 基础的目录
                 const uplaodBasePath = 'app/public/uploads';
                 // 生成文件名
-                const filename = `${Date.now()}${Math.random() * 1000}${path.extname(file.filename).toLocaleLowerCase()}`;
+                const filename = `${ctx.helper.randomString(24)}${path.extname(file.filename).toLocaleLowerCase()}`;
                 // 生成文件夹
                 const dirname = dayjs(Date.now()).format('YYYY/MM/DD');
                 function mkdirsSync(dirname) {
@@ -96,16 +68,27 @@ export default class FileController extends Controller {
                 const target = fs.createWriteStream(targetPath);
                 await pump(source, target);
                 const fileStat = fs.statSync(targetPath)
+                const user = await this.app.model.SystemUser.findOne({where: {id: this.ctx.user}})
+                const userFileSize = user.fileSize || 0
+                if(userFileSize + fileStat.size > this.app.config.maxFileSize){
+                    try{
+                        await fs.unlinkSync(targetPath)
+                    }catch(e){
+                        console.log('err==================',e)
+                    }
+                    return await ctx.fail("您的剩余空间不足")
+                }
                 const image = {
                     format: file.mime,
                     url: '/public/uploads/' + dirname + '/' + filename,
                     path: targetPath,
                     size: fileStat.size,
-                    name: filename,
+                    name: file.filename,
                     type: file.mime.split('/').shift(),
                     creator: ctx.user
                 }
                 const iobj = await this.app.model.SystemFile.create(image)
+                await this.app.model.SystemUser.update({fileSize: userFileSize + fileStat.size}, { where: { id: ctx.user } })
                 images.push(iobj)
                 // ctx.logger.warn('save %s to %s', file.filepath, targetPath);
             }

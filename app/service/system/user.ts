@@ -53,8 +53,9 @@ export default class UserService extends Service {
     /**更新 */
     public async update(options: any) {
         const { ctx } = this
+        const {name,avatar,phone,sex,address,birth} = options
         let results = { code: 500, message: "失败", }
-        await ctx.model.SystemUser.update(options, {
+        await ctx.model.SystemUser.update({name,avatar,phone,sex,address,birth}, {
             where: { id: ctx.user }
         }).then(() => {
             results = { code: 0, message: "更新成功", }
@@ -129,12 +130,9 @@ export default class UserService extends Service {
     // 登录查询个人信息
     async getUserInfo(options) {
         const { ctx } = this
-        let userInfo: any = {};
-        await ctx.model.SystemUser.findOne({
+        let userInfo = await ctx.model.SystemUser.findOne({
             where: options,
             attributes: { exclude: ['password'] }
-        }).then(async res => {
-            userInfo = res
         })
         return userInfo
     }
