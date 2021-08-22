@@ -26,6 +26,19 @@ export default class SceneService extends Service {
         })
         return list;
     }
+    public async homelist(options) {
+        let {page = 1, pageSize = this.config.pageSize} = options
+        let list = await this.app.model.Scene.findAndCountAll({
+            where:{},
+            limit: +pageSize,
+            offset: pageSize * (page-1),
+            order: [ ["createdAt", 'DESC']],
+            include:[
+                {model: this.app.model.SystemUser, as: "user",attributes:['name',"avatar","username"]}
+            ]
+        })
+        return list;
+    }
     
   /**
    * 保存
@@ -51,7 +64,7 @@ export default class SceneService extends Service {
    */
     public async update(options: any) {
         const { ctx } = this
-        const {id,title,desc,cover,music,properties} = options
+        const {id,title,desc,cover,music,properties,viewCount} = options
         let status = 1;
         let results = { code: 400, message: "失败", }
         //先找到那条数据
@@ -59,7 +72,7 @@ export default class SceneService extends Service {
         if(data && data.status==2){
             status = 3
         }
-        data && await ctx.model.Scene.update({title,desc,cover,music,properties,status},{
+        data && await ctx.model.Scene.update({title,desc,cover,music,properties,status,viewCount},{
             where:{id: id}
         }).then(() => {
             results = { code: 0, message: "添加成功", }

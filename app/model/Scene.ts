@@ -21,7 +21,7 @@ module.exports = app => {
          * User.belongsTo(关联的模型, { foreignKey: '使用什么字段关联', targetKey: '与关联的模型那个字段关联', as: '别名' });
         */
         // 一对一
-        // User.belongsTo(app.model.SystemFile, { foreignKey: 'avatarId', targetKey: 'id', as: 'avatar' });
+        Scene.belongsTo(app.model.SystemUser, { foreignKey: 'creator', targetKey: 'id', as: 'user' });
     }
 
     return Scene;

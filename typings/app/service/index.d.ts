@@ -10,6 +10,7 @@ import ExportTest from '../../../app/service/Test';
 import ExportSceneFav from '../../../app/service/scene/fav';
 import ExportScenePage from '../../../app/service/scene/page';
 import ExportSceneScene from '../../../app/service/scene/scene';
+import ExportSceneStatVisit from '../../../app/service/scene/statVisit';
 import ExportSystemFile from '../../../app/service/system/file';
 import ExportSystemUser from '../../../app/service/system/user';
 
@@ -20,6 +21,7 @@ declare module 'egg' {
       fav: AutoInstanceType<typeof ExportSceneFav>;
       page: AutoInstanceType<typeof ExportScenePage>;
       scene: AutoInstanceType<typeof ExportSceneScene>;
+      statVisit: AutoInstanceType<typeof ExportSceneStatVisit>;
     }
     system: {
       file: AutoInstanceType<typeof ExportSystemFile>;

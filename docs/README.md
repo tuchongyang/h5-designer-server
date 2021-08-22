@@ -252,6 +252,46 @@ type 文件类型, 取值 image、video、audio
 
 ## 场景
 
+### 首页场景列表
+
+`get` `/api/scene/homelist`
+
+请求参数
+```json
+{
+  "page": 1,
+  "pageSize": 20
+}
+```
+响应参数
+```json
+{
+  "status": 200,
+  "result": {
+    "count": 1,
+    "rows": [
+      {
+        "id": 2,
+        "title": "我的第一个场景1",
+        "desc": "这是描述",
+        "cover": "cover url",
+        "music": "音乐url",
+        "status": 1,
+        "properties": "{}",
+        "viewCount": 0,
+        "creator": 1,
+        "createdAt": "2021-08-21 17:22:33",
+        "updatedAt": "2021-08-21 17:22:33",
+        "user":{
+          "name": "cy",
+          "avatar": null,
+          "username": "tcy2"
+        }
+      }
+    ]
+  }
+}
+```
 ### 我的场景列表
 
 `get` `/api/scene/list`
@@ -290,6 +330,7 @@ type 文件类型, 取值 image、video、audio
 ### 添加场景
 
 `post` `/api/scene/save`
+
 请求参数
 ```json
 {
@@ -306,9 +347,11 @@ type 文件类型, 取值 image、video、audio
   "status": 200
 }
 ```
+
 ### 修改场景
 
 `post` `/api/scene/update/2`
+
 请求参数
 ```json
 {
@@ -325,6 +368,7 @@ type 文件类型, 取值 image、video、audio
   "status": 200
 }
 ```
+
 ### 发布场景
 
 `post` `/api/scene/publish/2`
@@ -377,6 +421,53 @@ type 文件类型, 取值 image、video、audio
   "status": 200
 }
 ```
+### 添加场景访问记录
+
+`get` `/api/scene/visit/2`
+
+### 场景统计汇总
+
+`get` `/api/scene/stat/total/2`
+
+响应参数
+```json
+{
+  "status": 200,
+  "result":{
+    "todayNum": 7,
+    "yestodayNum": 1,
+    "weekNum": 9,
+    "monthNum": 9,
+    "totalNum": 9
+  }
+}
+```
+
+### 场景统计趋势
+
+`get` `/api/scene/stat/trend/2?startTime=2021-08-19&endTime=2021-08-30`
+
+响应参数
+```json
+{
+    "status": 200,
+    "result": {
+        "times": [
+            "2021-08-16",
+            "2021-08-17",
+            "2021-08-18",
+            "2021-08-19",
+            "2021-08-20",
+            "2021-08-21",
+            "2021-08-22"
+        ],
+        "pv": [ 0, 0, 0, 0, 1, 1, 0],
+        "uv": [ 0, 0, 0, 0, 1, 1, 0],
+        "ip": [ 0, 0, 0, 0, 1, 1, 0]
+    }
+}
+```
+
 
 ## 场景页面
 
