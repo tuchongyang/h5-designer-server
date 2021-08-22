@@ -214,10 +214,139 @@
                     "items": []
                   },
                   "host": "${host}",
+                  "path": "/api/scene/visit/2"
+                },
+                "id": "3b71b532-fb59-4902-8a8c-564565f0fd7a",
+                "name": "添加访问数据",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/stat/total/2"
+                },
+                "id": "0083fe0d-ffad-47ea-8fa0-30579ed9057c",
+                "name": "访问统计",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": [
+                      {
+                        "enabled": true,
+                        "name": "startTime",
+                        "value": "2021-08-16"
+                      },
+                      {
+                        "enabled": true,
+                        "name": "endTime",
+                        "value": "2021-08-22"
+                      }
+                    ]
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/stat/trend/2"
+                },
+                "id": "3b7ded4a-de11-4bc5-b533-09177a05a3a4",
+                "name": "访问统计趋势",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
                   "path": "/api/scene/2"
                 },
                 "id": "5a1cf466-902e-4e38-990d-aa004f4fc9c9",
                 "name": "详情",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/home/list"
+                },
+                "id": "8f6373fb-577e-48cc-b298-789b5ac8f29f",
+                "name": "首页场景列表",
                 "headers": []
               }
             }
@@ -400,6 +529,131 @@
                 "id": "e2a826af-1adf-4e55-8957-ba584ae7ebb8",
                 "name": "详情                                                                                                                                                                                                                                                              ",
                 "headers": []
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "b018e91d-14c1-4a80-9591-638c8c67c9ea",
+            "name": "收藏"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\"sceneId\": 2}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/fav/cancel"
+                },
+                "id": "ed052bfd-3d0f-40c0-9216-3060e455f3d7",
+                "name": "取消收藏",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/fav/list"
+                },
+                "id": "631e31d2-39dc-439c-b1a9-41cb0acb2398",
+                "name": "我的收藏列表",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\"sceneId\": 2}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "host": "${host}",
+                  "path": "/api/scene/fav/save"
+                },
+                "id": "0623c1d4-ecba-4c23-b916-4c13beaa3333",
+                "name": "添加收藏",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "enabled": true,
+                    "name": "authorization",
+                    "value": "${auth}"
+                  }
+                ]
               }
             }
           ]
@@ -652,14 +906,14 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\n  \"email\":\"779311998@qq.com\",\n  \"code\":\"088276\",\n  \"username\":\"tcy2\",\n  \"password\":\"123456\"\n}"
+                  "textBody": "{\n  \"email\":\"779311998@qq.com\",\n  \"code\":\"452071\",\n  \"username\":\"tcy\",\n  \"password\":\"123456\"\n}"
                 },
                 "uri": {
                   "query": {
                     "delimiter": "&",
                     "items": []
                   },
-                  "host": "${host}",
+                  "host": "${hostapi}",
                   "path": "/api/system/user/regist"
                 },
                 "id": "183eb273-8f3c-4a94-add6-0c3ff8b87c6b",
@@ -695,7 +949,7 @@
                     "delimiter": "&",
                     "items": []
                   },
-                  "host": "${host}",
+                  "host": "${hostapi}",
                   "path": "/api/system/user/login"
                 },
                 "id": "27960e68-5a60-4a49-9056-3eb1f89e624f",
@@ -731,7 +985,7 @@
                     "delimiter": "&",
                     "items": []
                   },
-                  "host": "${host}",
+                  "host": "${hostapi}",
                   "path": "/api/system/user/getcode"
                 },
                 "id": "20b1b608-8c42-4947-bd3a-522802c722d5",

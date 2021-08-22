@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 80011
 File Encoding         : 65001
 
-Date: 2021-08-21 21:19:03
+Date: 2021-08-22 20:52:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -45,7 +45,7 @@ CREATE TABLE `scene_fav` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for scene_page
@@ -64,6 +64,22 @@ CREATE TABLE `scene_page` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Table structure for scene_stat_visit
+-- ----------------------------
+DROP TABLE IF EXISTS `scene_stat_visit`;
+CREATE TABLE `scene_stat_visit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `scene_id` int(11) NOT NULL,
+  `pv` bigint(20) DEFAULT NULL,
+  `uv` int(11) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `user_agent` varchar(255) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for system_code
