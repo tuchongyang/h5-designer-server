@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportHome from '../../../app/controller/home';
+import ExportSceneFav from '../../../app/controller/scene/fav';
 import ExportScenePage from '../../../app/controller/scene/page';
 import ExportSceneScene from '../../../app/controller/scene/scene';
 import ExportSystemFile from '../../../app/controller/system/file';
@@ -12,6 +13,7 @@ declare module 'egg' {
   interface IController {
     home: ExportHome;
     scene: {
+      fav: ExportSceneFav;
       page: ExportScenePage;
       scene: ExportSceneScene;
     }

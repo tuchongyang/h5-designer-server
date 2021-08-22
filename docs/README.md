@@ -479,3 +479,74 @@ type 文件类型, 取值 image、video、audio
   "status": 200
 }
 ```
+
+## 收藏
+
+
+### 我的收藏列表
+
+`get` `/api/scene/fav/list`
+响应参数
+```json
+{
+  "status": 200,
+  "result": {
+    "count": 1,
+    "rows": [
+      {
+        "id": 2,
+        "sceneId": 2,
+        "userId": 1,
+        "createdAt": "2021-08-22 08:42:40",
+        "updatedAt": "2021-08-22 08:42:40",
+        "scene": {
+            "id": 2,
+            "title": "我的第一个场景1",
+            "desc": "这是描述",
+            "cover": "cover url",
+            "music": "音乐url",
+            "status": 2,
+            "properties": "{}",
+            "viewCount": 0,
+            "creator": 1,
+            "createdAt": "2021-08-21 17:22:33",
+            "updatedAt": "2021-08-21 20:36:18"
+        }
+      }
+    ]
+  }
+}
+```
+
+### 添加收藏
+
+`post` `/api/scene/fav/save`
+
+请求参数
+```json
+{ "sceneId": 2 }
+```
+
+响应参数
+```json
+{
+  "status": 200
+}
+```
+
+
+### 取消收藏
+
+`post` `/api/scene/fav/cancel`
+
+请求参数
+```json
+{ "sceneId": 2 }
+```
+
+响应参数
+```json
+{
+  "status": 200
+}
+```

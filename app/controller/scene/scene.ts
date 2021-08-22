@@ -65,6 +65,12 @@ export default class SceneController extends Controller {
     public async detail(){
         const { ctx } = this;
         const data = await ctx.service.scene.scene.detail(ctx.params.id)
+        if(data){
+            const fav = await ctx.model.SceneFav.findOne({where:{sceneId: ctx.params.id}})
+            if(ctx.user){
+                data.setDataValue('isFav',fav?true:false)
+            }
+        }
         
         data?ctx.success(data):ctx.fail("数据不存在")
        
