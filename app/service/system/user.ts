@@ -53,9 +53,9 @@ export default class UserService extends Service {
     /**更新 */
     public async update(options: any) {
         const { ctx } = this
-        const {name,avatar,phone,sex,address,birth} = options
+        const { name, avatar, phone, sex, address, birth } = options
         let results = { code: 500, message: "失败", }
-        await ctx.model.SystemUser.update({name,avatar,phone,sex,address,birth}, {
+        await ctx.model.SystemUser.update({ name, avatar, phone, sex, address, birth }, {
             where: { id: ctx.user }
         }).then(() => {
             results = { code: 0, message: "更新成功", }
@@ -71,19 +71,22 @@ export default class UserService extends Service {
     public async login(options: any) {
         const { ctx } = this
         const { or } = this.app.Sequelize.Op
-        const { email, username, password } = options
+        const { name, password } = options
         let results = { code: 400, message: "失败", token: '' }
         await ctx.model.SystemUser.findOne({
             where: {
-                [or]: [{ username: username || "" }, { email: email || "" }]
+                [or]: [{ username: name || "" }, { email: name || "" }, { phone: name || "" }]
             },
         }).then(async result => {
             if (result) {
                 const hash = crypto.createHash('md5');
-                options.password = hash.update(password).digest('hex')
+                const HashPassword = hash.update(password).digest('hex')
 
                 await ctx.model.SystemUser.findOne({
-                    where: options,
+                    where: {
+                        [or]: [{ username: name || "" }, { email: name || "" }],
+                        password: HashPassword
+                    },
                     attributes: { exclude: ['password'] }
                 }).then(async (data) => {
                     if (!data) {
