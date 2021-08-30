@@ -2,6 +2,7 @@
 // Do not modify this file!!!!!!!!!
 
 import 'egg';
+import ExportForm from '../../../app/model/Form';
 import ExportScene from '../../../app/model/Scene';
 import ExportSceneFav from '../../../app/model/SceneFav';
 import ExportScenePage from '../../../app/model/ScenePage';
@@ -12,6 +13,7 @@ import ExportSystemUser from '../../../app/model/SystemUser';
 
 declare module 'egg' {
   interface IModel {
+    Form: ReturnType<typeof ExportForm>;
     Scene: ReturnType<typeof ExportScene>;
     SceneFav: ReturnType<typeof ExportSceneFav>;
     ScenePage: ReturnType<typeof ExportScenePage>;
