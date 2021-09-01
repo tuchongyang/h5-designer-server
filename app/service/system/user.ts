@@ -53,8 +53,11 @@ export default class UserService extends Service {
     /**更新 */
     public async update(options: any) {
         const { ctx } = this
-        const { name, avatar, phone, sex, address, birth } = options
+        let { name, avatar, phone, sex, address, birth = null } = options
         let results = { code: 500, message: "失败", }
+        if (!birth) {
+            birth = null
+        }
         await ctx.model.SystemUser.update({ name, avatar, phone, sex, address, birth }, {
             where: { id: ctx.user }
         }).then(() => {
