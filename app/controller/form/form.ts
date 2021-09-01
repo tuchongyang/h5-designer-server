@@ -46,7 +46,7 @@ export default class SceneController extends Controller {
             ctx.fail(ret.message, ret.code)
         }
     }
-    @bp.del('/:id')
+    @bp.del('/:id', auth())
     public async remove() {
         const { ctx } = this;
         let ret = await ctx.service.form.form.remove(ctx.params.id);
@@ -141,7 +141,7 @@ export default class SceneController extends Controller {
 
     }
 
-    @bp.get('/stat/trend/:id')
+    @bp.get('/stat/form/:id')
     public async statTrend() {
         const { ctx } = this;
         const { Op } = this.app.Sequelize

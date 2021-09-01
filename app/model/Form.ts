@@ -14,11 +14,6 @@ module.exports = app => {
 
     // 表关联的字段
     Scene.associate = function () {
-        // 一对多
-        app.model.Scene.hasMany(app.model.ScenePage, { foreignKey: 'scene_id', targetKey: 'id' });
-        /**
-         * User.belongsTo(关联的模型, { foreignKey: '使用什么字段关联', targetKey: '与关联的模型那个字段关联', as: '别名' });
-        */
         // 一对一
         Scene.belongsTo(app.model.SystemUser, { foreignKey: 'creator', targetKey: 'id', as: 'user' });
     }
