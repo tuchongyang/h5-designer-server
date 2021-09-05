@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportForm from '../../../app/model/Form';
+import ExportFormAnswer from '../../../app/model/FormAnswer';
 import ExportScene from '../../../app/model/Scene';
 import ExportSceneFav from '../../../app/model/SceneFav';
 import ExportScenePage from '../../../app/model/ScenePage';
@@ -14,6 +15,7 @@ import ExportSystemUser from '../../../app/model/SystemUser';
 declare module 'egg' {
   interface IModel {
     Form: ReturnType<typeof ExportForm>;
+    FormAnswer: ReturnType<typeof ExportFormAnswer>;
     Scene: ReturnType<typeof ExportScene>;
     SceneFav: ReturnType<typeof ExportSceneFav>;
     ScenePage: ReturnType<typeof ExportScenePage>;

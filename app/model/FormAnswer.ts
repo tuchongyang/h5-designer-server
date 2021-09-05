@@ -1,15 +1,12 @@
 module.exports = app => {
     const { STRING, INTEGER, TEXT } = app.Sequelize;
 
-    const Scene = app.model.define('form', {
+    const Scene = app.model.define('form_answer', {
         id: { type: INTEGER, primaryKey: true, autoIncrement: true },
-        title: STRING,
-        desc: STRING,//描述
-        status: { type: INTEGER, defaultValue: 1 },//状态，1、待发布，2、已发布、3、已发布有修改
+        formId: INTEGER,//关联的表单Id
         content: TEXT,//json字符串
-        publishContent: TEXT,//json字符串
-        viewCount: INTEGER,//
-        cover: STRING,//
+        userAgent: STRING,//
+        ip: STRING,//回答人的ip地址
         creator: INTEGER,//创建的用户id
     }, { freezeTableName: true, timestamps: true });
 

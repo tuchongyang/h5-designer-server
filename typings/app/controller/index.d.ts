@@ -3,6 +3,7 @@
 
 import 'egg';
 import ExportHome from '../../../app/controller/home';
+import ExportFormAnswer from '../../../app/controller/form/answer';
 import ExportFormForm from '../../../app/controller/form/form';
 import ExportSceneFav from '../../../app/controller/scene/fav';
 import ExportScenePage from '../../../app/controller/scene/page';
@@ -14,6 +15,7 @@ declare module 'egg' {
   interface IController {
     home: ExportHome;
     form: {
+      answer: ExportFormAnswer;
       form: ExportFormForm;
     }
     scene: {
