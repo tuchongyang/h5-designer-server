@@ -845,7 +845,7 @@
                   {
                     "enabled": true,
                     "name": "authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                    "value": "${auth}"
                   }
                 ]
               }
@@ -865,7 +865,7 @@
                     "items": []
                   },
                   "bodyType": "Text",
-                  "textBody": "{\"birth\":\"1990-09-09\"}"
+                  "textBody": "{\"name\":\"xia1\",\"avatar\":null,\"phone\":null,\"sex\":1,\"address\":\"\",\"email\":\"892027354@qq.com\",\"birth\":\"\"}"
                 },
                 "uri": {
                   "query": {
@@ -886,7 +886,7 @@
                   {
                     "enabled": true,
                     "name": "authorization",
-                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoxLCJpYXQiOjE2Mjk0NjE4OTAsImV4cCI6MTYzMDA2NjY5MH0.j2wtMCnnzwDdfD-KSH1HLSD5ku9Zats7NwZoZ-vtTMk"
+                    "value": "${auth}"
                   }
                 ]
               }
@@ -1133,7 +1133,7 @@
                     "items": []
                   },
                   "host": "${host}",
-                  "path": "/api/scene/publish/2"
+                  "path": "/api/form/publish/4"
                 },
                 "id": "1ca19f16-21f3-4773-bea2-0e0a0a388a47",
                 "name": "发布",
@@ -1308,7 +1308,7 @@
                     "items": []
                   },
                   "host": "${host}",
-                  "path": "/api/scene/2"
+                  "path": "/api/form/4"
                 },
                 "id": "f2f4ecd2-b24f-40e6-b510-37841f393d37",
                 "name": "详情",
