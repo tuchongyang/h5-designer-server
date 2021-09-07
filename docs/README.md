@@ -687,3 +687,150 @@ type 文件类型, 取值 image、video、audio
   "status": 200
 }
 ```
+
+## 表单
+
+### 我的表单列表
+
+`get` `/api/form/list`
+请求参数
+
+```json
+{
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+响应参数
+
+```json
+{
+  "status": 200,
+  "result": {
+    "count": 1,
+    "rows": [
+      {
+        "id": 4,
+        "title": "dasd11",
+        "desc": "asdasd",
+        "status": 1,
+        "content": null,
+        "viewCount": 0,
+        "cover": null,
+        "creator": 2,
+        "createdAt": "2021-09-01 18:04:50",
+        "updatedAt": "2021-09-02 15:59:53"
+      }
+    ]
+  }
+}
+```
+
+### 添加表单
+
+`post` `/api/form/save`
+
+请求参数
+
+```json
+{
+  "title": "我的第一个表单",
+  "desc": "这是描述"
+}
+```
+
+响应参数
+
+```json
+{
+  "status": 200
+}
+```
+
+### 修改表单
+
+`post` `/api/form/update/2`
+
+请求参数
+
+```json
+{
+  "title": "我的第一个表单",
+  "desc": "这是描述",
+  "cover": "cover url",
+  "content": "{}"
+}
+```
+
+响应参数
+
+```json
+{
+  "status": 200
+}
+```
+
+### 发布表单
+
+`post` `/api/form/publish/2`
+
+响应参数
+
+```json
+{
+  "status": 200
+}
+```
+
+### 表单详情
+
+`get` `/api/form/2`
+响应参数
+
+```json
+{
+  "status": 200,
+  "result": {
+    "id": 2,
+    "title": "我的第一个表单",
+    "desc": "这是描述",
+    "cover": "cover url",
+    "status": 1,
+    "content": "{}",
+    "viewCount": 0,
+    "creator": 1,
+    "createdAt": "2021-08-21 17:22:33",
+    "updatedAt": "2021-08-21 17:22:33"
+  }
+}
+```
+
+### 表单删除
+
+`delete` `/api/form/2`
+响应参数
+
+```json
+{
+  "status": 200
+}
+```
+
+### 表单反馈列表
+
+`get` `/api/form/answer/list?formId=4`
+
+请求参数
+
+```json
+{
+  "page": 1,
+  "pageSize": 20,
+  "formId": 4
+}
+```
+
+### 添加反馈
+
+`post` `/api/form/answer/save/4`
