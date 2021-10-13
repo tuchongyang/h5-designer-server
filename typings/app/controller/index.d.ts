@@ -8,6 +8,7 @@ import ExportFormForm from '../../../app/controller/form/form';
 import ExportSceneFav from '../../../app/controller/scene/fav';
 import ExportScenePage from '../../../app/controller/scene/page';
 import ExportSceneScene from '../../../app/controller/scene/scene';
+import ExportSceneSpider from '../../../app/controller/scene/spider';
 import ExportSystemFile from '../../../app/controller/system/file';
 import ExportSystemUser from '../../../app/controller/system/user';
 
@@ -22,6 +23,7 @@ declare module 'egg' {
       fav: ExportSceneFav;
       page: ExportScenePage;
       scene: ExportSceneScene;
+      spider: ExportSceneSpider;
     }
     system: {
       file: ExportSystemFile;
