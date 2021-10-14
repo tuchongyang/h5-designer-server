@@ -1,14 +1,14 @@
-import { EggAppConfig, EggAppInfo, PowerPartial } from 'egg'
+import { EggAppConfig, EggAppInfo, PowerPartial } from "egg";
 
 export default (appInfo: EggAppInfo) => {
   const config = {} as PowerPartial<EggAppConfig>;
 
   // override config from framework / plugin
   // use for cookie sign key, should change to your own and keep security
-  config.keys = appInfo.name + '_1629426225121_5684';
+  config.keys = appInfo.name + "_1629426225121_5684";
 
   // add your egg config in here
-  config.middleware = ['execption'];
+  config.middleware = ["execption"];
 
   // add your special config in here
   const bizConfig = {
@@ -16,26 +16,26 @@ export default (appInfo: EggAppInfo) => {
   };
 
   config.jwt = {
-    secret: '12345678',
+    secret: "12345678",
     enable: false,
   };
   config.security = {
     csrf: {
       enable: false,
     },
-    domainWhiteList: ['*']
+    domainWhiteList: ["*"],
   };
   config.cors = {
-    origin: '*',
-    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS'
+    origin: "*",
+    allowMethods: "GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS",
   };
   config.sequelize = {
-    timezone: '+08:00',
+    timezone: "+08:00",
     dialectOptions: {
       dateStrings: true,
       typeCast(field, next) {
         // for reading from database
-        if (field.type === 'DATETIME') {
+        if (field.type === "DATETIME") {
           return field.string();
         }
         return next();
@@ -43,11 +43,11 @@ export default (appInfo: EggAppInfo) => {
     },
   };
   config.multipart = {
-    mode: 'file',
-    fileSize: '100mb',
+    mode: "file",
+    fileSize: "50mb",
   };
   config.pageSize = 20;
-  config.maxFileSize = 1024 * 1024 * 50
+  config.maxFileSize = 1024 * 1024 * 50;
 
   // the return config will combines to EggAppConfig
   return {

@@ -40,8 +40,8 @@ export default class SceneController extends Controller {
       result.push({
         animateName: elementAnimations.animation_in.show,
         label: elementAnimations.animation_in.show,
-        delay: elementAnimations.animation_in.delay, //动画延迟时间
-        duration: elementAnimations.animation_in.speed, //动画完成时间
+        delay: elementAnimations.animation_in.delay / 1000, //动画延迟时间
+        duration: elementAnimations.animation_in.speed / 1000, //动画完成时间
       });
     }
     elementAnimations.animation_on
@@ -50,8 +50,8 @@ export default class SceneController extends Controller {
         result.push({
           animateName: a.show,
           label: a.show,
-          delay: a.delay,
-          duration: a.speed,
+          delay: a.delay / 1000,
+          duration: a.speed / 1000,
           iterationCount: a.iteration_count,
           infinite: a.enable_loop,
         });
