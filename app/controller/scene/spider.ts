@@ -25,7 +25,7 @@ export default class SceneController extends Controller {
       title: params.title,
       desc: "",
       cover: params.cover,
-      music: pdata.music.url,
+      music: pdata.music.url || pdata.music.id,
       properties: "",
       creator: 2,
     };
@@ -44,18 +44,19 @@ export default class SceneController extends Controller {
         duration: elementAnimations.animation_in.speed / 1000, //动画完成时间
       });
     }
-    elementAnimations.animation_on
-      .filter((a) => a.enable)
-      .map((a) => {
-        result.push({
-          animateName: a.show,
-          label: a.show,
-          delay: a.delay / 1000,
-          duration: a.speed / 1000,
-          iterationCount: a.iteration_count,
-          infinite: a.enable_loop,
+    elementAnimations.animation_on &&
+      elementAnimations.animation_on
+        .filter((a) => a.enable)
+        .map((a) => {
+          result.push({
+            animateName: a.show,
+            label: a.show,
+            delay: a.delay / 1000,
+            duration: a.speed / 1000,
+            iterationCount: a.iteration_count,
+            infinite: a.enable_loop,
+          });
         });
-      });
     return result;
   }
   private async saveScenePage(pdata, sceneId) {
@@ -64,7 +65,7 @@ export default class SceneController extends Controller {
       pic: "image",
       ptext: "text",
     };
-    const scale = 375 / pdata.spec.width;
+    const scale = 375 / ((pdata.spec && pdata.spec.width) || 640);
 
     const pages = pdata.json.map((item, i) => {
       const elements = item.content.map((a) => {
@@ -84,7 +85,9 @@ export default class SceneController extends Controller {
             letterSpacing: a.letterSpacing,
             textdecoration: a.textdecoration,
           },
-          animateList: this.getAnimations(a.elementAnimations),
+          animateList:
+            (a.elementAnimations && this.getAnimations(a.elementAnimations)) ||
+            [],
           attrs: {},
         };
         switch (a.type) {
